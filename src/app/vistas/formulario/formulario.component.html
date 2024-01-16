@@ -1,0 +1,94 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Registro de Usuario</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre" formControlName="firstName">
+            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+              El nombre es <strong>obligatorio</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Apellidos" formControlName="lastName">
+            <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
+              Los apellidos son <strong>obligatorios</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Direccion" formControlName="address"></textarea>
+            <mat-error *ngIf="addressForm.controls['address'].hasError('required')">
+              La direccion es <strong>obligatoria</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="!hasUnitNumber">
+        <div class="col">
+          <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+            + Añadir otra Direccion
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="hasUnitNumber">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Direccion 2" formControlName="address2"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Ciudad" formControlName="city">
+            <mat-error *ngIf="addressForm.controls['city'].hasError('required')">
+              La ciudad es <strong>obligatoria</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Provincia" formControlName="state">
+              <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                {{ state.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="addressForm.controls['state'].hasError('required')">
+              La provincia es <strong>obligatoria</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #postalCode maxlength="5" placeholder="Codigo Postal" type="number" formControlName="postalCode">
+            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="shipping">
+            <mat-radio-button value="free">Prestamo de Libros</mat-radio-button>
+            <mat-radio-button value="priority">Administracion de Biblioteca</mat-radio-button>
+            <mat-radio-button value="nextday">Empleado de la Biblioteca</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,10 @@
+<div *ngIf="mostrarBienvenida">
+    <h2>Bienvenido A la Aplicacion</h2>
+    <div class="text-center">
+        <button class="btn btn-primary" (click)="irAlEnlace()">Acceder</button>
+    </div>
+</div>
+<div *ngIf="!mostrarBienvenida">
+    <!-- Aquí puedes colocar el contenido del nuevo componente -->
+    <app-menu-principal></app-menu-principal>
+</div>
