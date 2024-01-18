@@ -19,11 +19,19 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DragComponent } from './vistas/drag/drag.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BienvenidaComponent } from './vistas/bienvenida/bienvenida.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './vistas/login/login.component';
+import { RegistroComponent } from './vistas/registro/registro.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment.development';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TablaComponent,
     FormularioComponent,
     DragComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +62,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatCardModule,
     ReactiveFormsModule,
     DragDropModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    provideFirestore(() => getFirestore())
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

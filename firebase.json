@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "ejercicio1-material",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

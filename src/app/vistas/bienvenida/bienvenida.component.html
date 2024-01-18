@@ -1,9 +1,45 @@
 <div *ngIf="mostrarBienvenida">
-    <h2>Bienvenido A la Aplicacion</h2>
-    <div class="text-center">
-        <button class="btn btn-primary" (click)="irAlEnlace()">Acceder</button>
+    <!--<h2>Bienvenido A la Aplicacion</h2>
+                <div class="text-center">
+                    <button class="btn btn-primary" (click)="irAlEnlace()">Acceder</button>
+                </div>-->
+    <!-- Toolbar -->
+    <div class="container-fluid">
+        <div class="row" >
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+                    <mat-card class="box">
+                      <mat-card-header>
+                        <mat-card-title>Iniciar Sesion</mat-card-title>
+                      </mat-card-header>
+                      <form class="example-form">
+                        <mat-card-content>
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Username"  formControlName="nombre">
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Password"  formControlName="contrasenia">
+                          </mat-form-field>
+                        </mat-card-content>
+                        <button mat-stroked-button  class="btn-block" routerLink="/registro">Ir a Registro</button>
+                        <button mat-stroked-button color="accent" class="btn-block">Iniciar Sesion</button>
+                      </form>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="col-4"></div>
+        </div>
     </div>
 </div>
+
+<div *ngIf="mostrarBienvenida">
+    <!--<h2>Bienvenido A la Aplicacion</h2>
+                <div class="text-center">
+                    <button class="btn btn-primary" (click)="irAlEnlace()">Acceder</button>
+                </div>-->
+    <!-- Toolbar -->
+
 <div *ngIf="!mostrarBienvenida">
     <!-- Aquí puedes colocar el contenido del nuevo componente -->
     <app-menu-principal></app-menu-principal>
